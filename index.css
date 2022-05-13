@@ -41,17 +41,13 @@
 
 }
 
-#project-contents {
-    list-style-type: disc;
-}
-
 #project-list {
     list-style-type: disc;
     padding-left: 10%;
     color: white;
-    margin:0px;
+    font-size:100%;
     font-weight: bolder;
-}
+}   
 #league-img {
     display:flex; 
     margin-left: auto; 
