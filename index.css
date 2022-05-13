@@ -41,20 +41,13 @@
 
 }
 
-#project-desc {
-    font-size: 30px;
-    font-style: italic;
-    color: white;
-    padding-left: 70px;
-    display:inline-block;
-}
-
 #project-contents {
     list-style-type: disc;
 }
 
 #project-list {
-    padding-left:120px;
+    list-style-type: disc;
+    padding-left: 10%;
     color: white;
     margin:0px;
     font-weight: bolder;
