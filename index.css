@@ -1,6 +1,6 @@
 #topbar {
     margin-right: 10%;
-    margin-top: -10px; 
+    margin-top: -5px; 
     background-color: white;
     position: fixed;
     padding-right:1%;
@@ -12,10 +12,10 @@
 
 #topbar span {
     font-family: Helvetica;
-    font-size: 100%;
+    font-size: 2vh;
     font-weight: bolder;
     word-spacing: 15px;
-    line-height: 70px;
+    line-height: 7vh;
 }
 
 #topbar span a {
@@ -36,16 +36,16 @@
 
 #project-header {
     color: white;
-    font-size: 200%;
+    font-size: 10vh;
     padding-left: 50px;
     padding-top: 50px;
 }
 
 #project-name {
     font-weight:bolder; 
-    font-size: 120%; 
+    font-size: 5vh; 
     padding-left: 3.5%; 
-    padding-bottom: 0%; 
+    padding-bottom: 0vh; 
     font-style: italic; 
     color: #ffb300; 
 }
@@ -54,7 +54,7 @@
     list-style-type: disc;
     padding-left: 10%;
     color: white;
-    font-size:120%;
+    font-size:5vh;
     font-weight: bolder;
 }   
 #league-img {
@@ -92,11 +92,11 @@
     text-align: center;
     font-style: normal;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 6vh;
 }
 
 #github-link {
-    font-size: 50px;
+    font-size: 7vh;
     text-decoration: none;
     color: rgb(65, 65, 210);
 }
