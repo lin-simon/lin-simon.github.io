@@ -6,8 +6,8 @@
     padding-right:1%;
     padding-left:1%;
     right: 0;
-    border-radius: 4px;
-    box-shadow: 0px 2px 2px grey;
+    border-radius: 0.5vh;
+    box-shadow: 0.2vh 0.1vh 0.5vh grey;
 }
 
 #topbar span {
@@ -29,7 +29,7 @@
 }
 
 #project-section {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.916);
     height: 100%;
     width: 100%;
 }
@@ -59,19 +59,18 @@
 }   
 #league-img {
     display: inline-block; 
-    margin-top: -400px; 
-    margin-left: 70%;
-    border-radius: 10px 10px;
-    box-shadow: 2px 2px 8px rgb(253, 187, 65);
+    margin-top: -45vh; 
+    margin-left: 120vh;
+    border-radius: 1vh;
+    box-shadow: 0.2vh 0.2vh 1.3vh rgb(253, 187, 65);
 }
 
 #website-img {
     display:flex; 
-    margin-left: 55%; 
-    margin-top: -200px; 
-    margin-right: 50px; 
-    border-radius: 10px 10px;
-    box-shadow: 4px 4px 10px rgb(19, 105, 235);
+    margin-left: 50%; 
+    margin-top: -30vh; 
+    border-radius: 1vh 1vh;
+    box-shadow: 0.5vh 0.5vh 1.3vh rgb(19, 105, 235);
 }
 
 #contact-header {
