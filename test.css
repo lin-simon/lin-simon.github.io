@@ -1,0 +1,94 @@
+#topbar a {
+    font-size: 125%;
+    line-height: 7vh;
+    font-family: Montserrat, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: black;
+    margin: 0vh 1vh 0vh 1vh;
+}
+
+#topbar a:hover {
+    color: rgba(17, 139, 240, 0.742);
+    transition: all 180ms ease-in;
+}   
+
+.layout {
+    width: 100%;
+  
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    align-content: center;
+}
+
+#topbar {
+    margin-top: 2%;
+    display: flex;
+    margin-right: 12%;
+    position: fixed;
+    right: 0;
+    border-radius: 0.5vh;
+    box-shadow: 0.2vh 0.1vh 0.5vh grey;
+}
+
+
+#comp-logo {
+    min-width: 400px;
+    min-height: 400px;
+    display: flex;
+    
+}
+
+#intro {
+    animation: fadeIn 1.5s;
+    font-size: 5vh;
+}
+
+#project-header {
+    font-family: Montserrat, sans-serif;
+    font-weight: bolder;
+}
+
+.project-card {
+    width: 23%;
+    min-width: 200px;
+    height: auto;
+    vertical-align: top;
+    margin: 8px;
+    background-color: white;
+    box-shadow: 0 2px 5px #aaa;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#projects {
+    display: flex;
+}
+
+article h3 {
+    font-family: Montserrat;
+    text-align: center;
+}
+
+nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+main {
+    margin-top: 10vw;
+    margin-left: 5vw;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
