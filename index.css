@@ -15,7 +15,6 @@
 
 .layout {
     width: 100%;
-  
     display: grid;
     grid-template-rows: repeat(auto-fit, 1fr);
     grid-template-columns: repeat(3, 1fr);
@@ -49,6 +48,7 @@
 #project-header {
     font-family: Montserrat, sans-serif;
     font-weight: bolder;
+    text-align: center;
 }
 
 .project-card {
@@ -61,10 +61,15 @@
     box-shadow: 0 2px 5px #aaa;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-size: smaller;
+    animation: fadeIn 1.5s;
 }
 
 #projects {
+    margin-top: 7%;
+    margin-right: 10vw;
     display: flex;
+    align-content: center;
 }
 
 article h3 {
