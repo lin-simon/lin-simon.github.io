@@ -10,13 +10,18 @@
     <title>Simon Lin</title>
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+	$('.navbutton').click(function(event){
+    event.preventDefault();
+});
+</script>
 
 <body>
     <nav>
         <div id="topbar">
-            <a href="index.html">&lt;/Home&gt;</a>
-            <a href="projects.html">&lt;/LAB10C&gt;</a>
-            <a href="contact.html">&lt;/Contact&gt;</a>
+            <a class='navbutton' href="index.html" onclick="event.preventDefault();">&lt;/home&gt;</a>
+            <a class='navbutton' href="projects.html" onclick="event.preventDefault();">&lt;/projects&gt;</a>
+            <a class='navbutton' href="contact.html" onclick="event.preventDefault();">&lt;/contact&gt;</a>
         </div>
     </nav>
     <main>  
