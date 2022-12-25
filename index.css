@@ -51,30 +51,12 @@
     text-align: center;
 }
 
-.project-card {
-    width: 23%;
-    min-width: 200px;
-    height: auto;
-    vertical-align: top;
-    margin: 8px;
-    background-color: white;
-    box-shadow: 0 2px 5px #aaa;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: smaller;
-    animation: fadeIn 1.5s;
-}
 
 #projects {
     margin-top: 7%;
     margin-right: 10vw;
     display: flex;
     align-content: center;
-}
-
-article h3 {
-    font-family: Montserrat;
-    text-align: center;
 }
 
 nav {
