@@ -28,9 +28,32 @@
     font-size: 1.2vw;
 }
 
+@media screen and (min-width: 10em) {
+    .cards 
+    {
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+ 
+    .card 
+    {
+        flex: 0 1 calc(55% - 1em);
+        margin: 20px;
+        
+        
+    }
+    .card p 
+    {
+        font-size: 15px;
+    }
+}
+
 @media screen and (min-width: 40em) {
     .cards 
     {
+        
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -50,17 +73,9 @@
      
     .card 
     {
-     
     }
 }
- 
- 
-@media screen and (min-width: 52em) {
-    .centered 
-    {   
-    
-    }
-}
+
 
 @keyframes fadeIn {
     0% { opacity: 0; }
