@@ -5,22 +5,13 @@
     text-decoration: none;
     font-weight: normal;
     color: black;
-    margin: 0vh 1vh 0vh 1vh;
+    margin: 0vh 1.5vh 0vh 1.5vh;
 }
 
 #topbar a:hover {
     color: rgba(17, 139, 240, 0.742);
     transition: all 180ms ease-in;
 }   
-
-.layout {
-    width: 100%;
-    display: grid;
-    grid-template-rows: repeat(auto-fit, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    align-content: center;
-}
 
 #topbar {
     margin-top: 2%;
@@ -46,19 +37,6 @@
     font-size: 5vh;
 }
 
-#project-header {
-    font-family: Montserrat, sans-serif;
-    font-weight: bolder;
-    text-align: center;
-}
-
-
-#projects {
-    margin-top: 7%;
-    margin-right: 10vw;
-    display: flex;
-    align-content: center;
-}
 
 nav {
     display: flex; 
