@@ -18,6 +18,14 @@
     box-shadow: 0.1vh 0.3vh 1vh grey;
     padding: 0;
     animation: fadeIn 1.2s;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+.card:hover
+{
+    transform: rotateY(170deg);
+    
 }
 
 .card p
