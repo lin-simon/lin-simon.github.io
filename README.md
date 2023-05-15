@@ -1,3 +1,4 @@
+
 # linsimon.github.io
 
 Welcome to my personal portfolio website! This site was built purely using HTML and CSS to showcase my frontend web development skills and my various coding projects.
