@@ -1,21 +1,17 @@
 <?php
-if (isset($_POST['submit'])) {
-  // Get the form data
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $subject = $_POST['subject'];
-  $body = $_POST['body'];
-
-  // Set up the email message
-  $to = 'lin.simon2003@gmail.com';
-  $headers = "From: $name <$email>\r\n";
-  $message = "Subject: $subject\r\n\r\n$body";
-
-  // Send the email
-  if (mail($to, $subject, $message, $headers)) {
-    echo 'Your message has been sent.';
-  } else {
-    echo 'There was an error sending your message.';
-  }
+if(isset($_POST['submit'])){
+    $to = "lin.simon2003@gmail.com"; // replace with your email address
+    $subject = "Contact form submission";
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['subject'];
+    $headers = "From: $email \r\n";
+    $headers .= "Reply-To: $email \r\n";
+    
+    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+    
+    // Send email
+    mail($to, $subject, $body, $headers);
+    exit();
 }
 ?>
