@@ -1,13 +1,22 @@
 function sendMail() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+
+    if (!name || !email || !message) {
+        alert("Please fill out all fields.")
+        return;
+    }
+
     var params = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      message: document.getElementById("message").value,
+        name: name,
+        email: email,
+        message: message,
     };
-  
+
     const serviceID = "service_z8z3myc"; //TODO: add to a dotenv
     const templateID = "template_5udphrs";
-  
+    
     emailjs.send(serviceID, templateID, params)
       .then(res=>{
           document.getElementById("name").value = "";
