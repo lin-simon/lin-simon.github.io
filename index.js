@@ -14,7 +14,7 @@ function sendMail() {
     };
 
     const serviceID = "service_z8z3myc"; //TODO: add to a dotenv
-    const templateID = "template_5udphrs";
+    const templateID = "template_w4pa9xn";
     
     emailjs.send(serviceID, templateID, params)
       .then(res=>{
