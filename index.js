@@ -8,16 +8,15 @@ function sendMail() {
     const serviceID = "service_z8z3myc"; //TODO: add to a dotenv
     const templateID = "template_5udphrs";
   
-      emailjs.send(serviceID, templateID, params)
+    emailjs.send(serviceID, templateID, params)
       .then(res=>{
           document.getElementById("name").value = "";
           document.getElementById("email").value = "";
           document.getElementById("message").value = "";
           console.log(res);
-          alert("Your message sent successfully!!")
+          alert("Your email was received!")
   
       })
       .catch(err=>console.log(err));
-  
-  }
+}
   
