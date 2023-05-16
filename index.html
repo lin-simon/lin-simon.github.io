@@ -10,6 +10,15 @@
   <script src="https://kit.fontawesome.com/a45343ae50.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700">
   <link rel="stylesheet" href="index.css">
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+  </script>
+  <script src="index.js"></script>
+  <script type="text/javascript"> 
+    (function(){
+      emailjs.init("k_HDqmJ-wJtw8JzTV");
+    })();
+  </script>
 </head>
 
 <body>
@@ -165,15 +174,12 @@
             <div class="text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <form action="mail.php" method="post">
-                            <input type="text" name="name" class="form-control mt-3" placeholder="Name">
-                            <input type="email" name="email" class="form-control mt-3" placeholder="Email">
-                            <input type="text" name="subject" class="form-control mt-3" placeholder="Subject">
-                            <div class="mt-3">
-                                <textarea name="body" class="form-control" rows="5" id="comment" name="text" placeholder="Body"></textarea>
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-outline-dark"><i class="fa-solid fa-share"></i></button>
-                        </form>
+                        <input type="text" id="name" class="form-control mt-3" placeholder="Name" required>
+                        <input type="email" id="email" class="form-control mt-3" placeholder="Email" required>
+                        <div class="mt-3">
+                            <textarea id="message" class="form-control" rows="5"placeholder="Body" required></textarea>
+                         </div>
+                        <button onclick="sendMail()" class="btn btn-outline-dark"><i class="fa-solid fa-share"></i></button>
                     </div>
                 </div>
             </div>
