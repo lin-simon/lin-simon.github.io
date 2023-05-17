@@ -116,6 +116,10 @@ html
 {
     scroll-behavior: smooth;    
 }
+
+h6 {
+    font-size: 50px;
+}
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
