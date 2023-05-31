@@ -19,12 +19,10 @@
 .hero_title {
     font-size: 5.2rem;
     font-family: Montserrat, sans-serif;
-    animation: fadeIn 0s;
 }
 .hero_desc {
     font-size: 2rem;
     font-family: Montserrat, sans-serif;
-    animation: fadeIn 1s;
 }
 .hero-text {
     text-align: center;
@@ -34,9 +32,27 @@
     transform: translate(-50%, -50%);
     color: rgb(228, 228, 228);
     font-family: Montserrat, sans-serif;
-    animation: fadeIn 1.5s;
 }
 
+#first-hi {
+    animation: fadeInFirst 1.2s forwards;
+}
+
+#first-simon {
+    animation: fadeIn 5s;
+}
+
+#second {
+    animation: fadeInDelayed 7s;
+}
+
+#comma {
+    animation: fadeInComma 5s;
+}
+
+#job {
+    animation: fadeInJob 8.2s;
+}
 .navbar-dark .navbar-nav .nav-link {
     color:white;
     font-family: Montserrat, sans-serif;
@@ -112,6 +128,11 @@ body
     background-color: #eeebeb;
 }
 
+i {
+    font-family: Montserrat, sans-serif;
+    font-weight:800;
+
+}
 html 
 {
     scroll-behavior: smooth;    
@@ -120,7 +141,32 @@ html
 h6 {
     font-size: 50px;
 }
+
 @keyframes fadeIn {
     0% { opacity: 0; }
+    20% { opacity: 0;}
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInComma {
+    0% { opacity: 0; }
+    40% { opacity: 0;}
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInFirst {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInDelayed {
+    0% { opacity: 0; }
+    40% { opacity: 0 }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInJob {
+    0% { opacity: 0; }
+    40% { opacity: 0 }
     100% { opacity: 1; }
 }
