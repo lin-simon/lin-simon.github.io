@@ -54,9 +54,6 @@
     animation: fadeInJob 8.2s;
 }
 
-#fade-nav {
-    animation: fadeInDelayed 5s;
-}
 .navbar-dark .navbar-nav .nav-link {
     color:white;
     font-family: Montserrat, sans-serif;
