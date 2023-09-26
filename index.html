@@ -27,6 +27,14 @@
       emailjs.init("k_HDqmJ-wJtw8JzTV");
     })();
   </script>
+  <script>
+        // set a short timeout before taking action
+        // so as to allow hash to be set
+        setTimeout(()=>{
+          // uses HTML5 history API to manipulate the location bar
+          history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
+        }, 10); // 5 millisecond timeout in this case
+  </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbarScroll">
