@@ -28,7 +28,7 @@ import { GithubOutlined, LinkedinOutlined, FileTextOutlined } from '@ant-design/
 const links = [
   { name: 'github.exe',   url: 'https://github.com/lin-simon',     icon: GithubOutlined },
   { name: 'linked_in.exe', url: 'https://www.linkedin.com/in/lin-simon/', icon: LinkedinOutlined },
-  { name: 'resume.pdf',   url: '/resume.pdf',                     icon: FileTextOutlined }
+  { name: 'resume.pdf',   url: 'vite-project/src/assets/Simons_Resume.pdf',                     icon: FileTextOutlined }
 ]
 
 // store x/y for each icon
