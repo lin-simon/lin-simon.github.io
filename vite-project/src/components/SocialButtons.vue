@@ -31,7 +31,7 @@ const links = [
   { name: 'resume.pdf',   url: 'vite-project/src/assets/Simons_Resume.pdf',                     icon: FileTextOutlined }
 ]
 
-// store x/y for each icon
+
 const positions = reactive(links.map(() => ({ x: 32, y: 0 })))
 let dragInfo = null
 
