@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@vuebits/ui": "^0.6.0",
+    "cgl": "^0.0.0"
+  }
+}
