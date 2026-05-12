@@ -1,9 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Antd from 'ant-design-vue'
-// only reset.css; no antd.css or antd.less
-import 'ant-design-vue/dist/reset.css'
+import './styles/global.css'
 
-const app = createApp(App)
-app.use(Antd)
-app.mount('#app')
+createApp(App).mount('#app')
