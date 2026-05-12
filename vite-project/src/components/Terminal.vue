@@ -200,7 +200,7 @@ const projects = [
  *  Shell state
  * ============================================================ */
 const themes = ['green', 'amber', 'matrix', 'mono']
-const theme = ref(localStorage.getItem('term-theme') || 'green')
+const theme = ref(localStorage.getItem('term-theme') || 'mono')
 watch(theme, v => localStorage.setItem('term-theme', v))
 
 const stream = ref([])
