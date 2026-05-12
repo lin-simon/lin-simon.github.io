@@ -50,7 +50,11 @@
             <span class="path"> ~</span>
             <span class="sigil"> %</span>
           </span>
-          <span class="input-wrap">
+          <span v-if="isTouchOnly" class="input-wrap touch-hint">
+            <span class="dim">tap a button below ↓</span>
+            <span class="cursor"></span>
+          </span>
+          <span v-else class="input-wrap">
             <span class="input-shadow">{{ input }}</span>
             <input
               ref="inputRef"
@@ -213,6 +217,7 @@ const cmdHistory = ref([])
 const historyIdx = ref(-1)
 const lastCommand = ref('')
 const typing = ref(false)
+const isTouchOnly = ref(false)
 let stickToBottom = true
 let skipRequested = false
 
@@ -309,19 +314,18 @@ const commands = {
   },
 
   about_me: () => {
-    const W = 56
-    const line = (label, value) => {
-      const left = `│  <span class="dim">${label.padEnd(10, ' ')}</span>`
-      return `${left}${value}`
-    }
-    out(`<pre class="card">┌─ <span class="cyan">${esc(me.name)}</span> ${'─'.repeat(W - me.name.length - 4)}┐
-${line('role',     `<span class="amber">${esc(me.role)}</span>`)}
-${line('program',  `<span class="purple">${esc(me.program)}</span>`)}
-${line('school',   `<span class="school">${esc(me.school)}</span>`)}
-${line('location', `<span class="loc">${esc(me.location)} 🇨🇦</span>`)}
-${line('gpa',      `<span class="yellow">${esc(me.gpa)}</span> <span class="dim">·</span> <span class="ok">${esc(me.honors)}</span>`)}
-${line('github',   `<span class="link-static">@${esc(me.github)}</span>`)}
-└${'─'.repeat(W)}┘</pre>`)
+    const row = (label, value) => `<div class="me-row"><span class="me-label">${label}</span><span class="me-value">${value}</span></div>`
+    out(`<div class="me-card">
+      <div class="me-head"><span class="me-name">${esc(me.name)}</span></div>
+      <div class="me-body">
+        ${row('role',     `<span class="amber">${esc(me.role)}</span>`)}
+        ${row('program',  `<span class="purple">${esc(me.program)}</span>`)}
+        ${row('school',   `<span class="school">${esc(me.school)}</span>`)}
+        ${row('location', `<span class="loc">${esc(me.location)} 🇨🇦</span>`)}
+        ${row('gpa',      `<span class="yellow">${esc(me.gpa)}</span> <span class="dim">·</span> <span class="ok">${esc(me.honors)}</span>`)}
+        ${row('github',   `<span class="link-static">@${esc(me.github)}</span>`)}
+      </div>
+    </div>`)
     blank()
     out(`<span class="dim">try:</span> ${cmdSpan('experience')}  ${cmdSpan('projects')}  ${cmdSpan('contact')}`)
   },
@@ -484,7 +488,7 @@ function runChip(s) {
 }
 
 function focusInput() {
-  if (isBooting.value || typing.value) return
+  if (isBooting.value || typing.value || isTouchOnly.value) return
   inputRef.value?.focus({ preventScroll: true })
 }
 
@@ -544,6 +548,7 @@ function onWindowFocus() { if (!isBooting.value && !typing.value) focusInput() }
 
 onMounted(async () => {
   await nextTick()
+  isTouchOnly.value = window.matchMedia('(pointer: coarse)').matches
   window.addEventListener('focus', onWindowFocus)
   bodyRef.value?.addEventListener('click', onBodyClick)
   boot()
@@ -654,10 +659,12 @@ onBeforeUnmount(() => {
 .tw-body {
   flex: 1; min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1rem clamp(.75rem, 2vw, 1.25rem) 1.25rem;
   font-size: clamp(.82rem, 1.6vw, 0.98rem);
   line-height: 1.55;
 }
+.tw-body :deep(pre) { max-width: 100%; overflow-x: auto; scrollbar-width: thin; }
 .tw-stream { display: flex; flex-direction: column; }
 .tw-line { white-space: pre-wrap; word-break: break-word; }
 .tw-line + .tw-line { margin-top: 2px; }
@@ -688,6 +695,7 @@ onBeforeUnmount(() => {
   font: inherit; padding: 0;
 }
 .input-wrap input:disabled { cursor: progress; }
+.touch-hint { display: inline-flex; align-items: center; gap: 0.5ch; }
 .input-shadow { color: var(--fg); white-space: pre; }
 .cursor {
   display: inline-block; width: .55ch; height: 1.05em;
@@ -753,6 +761,30 @@ onBeforeUnmount(() => {
   text-shadow: 0 0 14px rgba(116,224,138,0.4);
 }
 :deep(.card) { color: var(--fg); margin: 0; }
+
+/* about_me card (CSS, no monospace box-drawing) */
+:deep(.me-card) {
+  display: flex; flex-direction: column;
+  margin: 0.25rem 0 0.5rem;
+  padding: 0.7rem 0.9rem 0.75rem;
+  background: rgba(255,255,255,0.018);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  max-width: 100%;
+}
+:deep(.me-head) {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
+  border-bottom: 1px dashed var(--border);
+}
+:deep(.me-name) {
+  color: var(--cyan); font-weight: 700; font-size: 1.05em; letter-spacing: 0.2px;
+}
+:deep(.me-body) { display: grid; grid-template-columns: auto 1fr; gap: 4px 1rem; }
+:deep(.me-row) { display: contents; }
+:deep(.me-label) { color: var(--dim); white-space: nowrap; }
+:deep(.me-value) { color: var(--fg); min-width: 0; word-break: break-word; }
 
 /* Job + project cards */
 :deep(.job-card) {
@@ -849,15 +881,47 @@ onBeforeUnmount(() => {
 
 /* Mobile */
 @media (max-width: 640px) {
-  .terminal { height: 82dvh; border-radius: 10px; }
-  .tw-title { font-size: .7rem; gap: .3rem; max-width: 50%; }
-  .tw-title-size { display: none; }
-  .tw-body { padding: .85rem .8rem 1rem; font-size: .85rem; line-height: 1.55; }
-  .tw-suggest { padding: .5rem .6rem; }
-  .chip { font-size: .78rem; padding: .3rem .65rem; }
-  :deep(.banner) { font-size: 7.5px; line-height: 1.1; }
+  .terminal { height: 88dvh; border-radius: 10px; }
+  .tw-title { font-size: .68rem; gap: .3rem; max-width: 55%; }
+  .tw-body {
+    padding: .7rem .65rem .85rem;
+    font-size: .74rem;
+    line-height: 1.5;
+  }
+  .tw-suggest { padding: .5rem .55rem; gap: .3rem; }
+  .chip { font-size: .78rem; padding: .38rem .75rem; }
+  :deep(.banner) { font-size: 6.5px; line-height: 1.1; text-shadow: 0 0 8px rgba(116,224,138,0.3); }
+  :deep(.job-card) { padding: 0.55rem 0.65rem 0.6rem; }
+  :deep(.job-card .card-period) { font-size: 0.75em; padding: 1px 6px; }
+  :deep(.me-card) { padding: 0.6rem 0.7rem 0.65rem; }
+  :deep(.me-body) { gap: 3px 0.7rem; }
+  :deep(.tag) { font-size: .72em; padding: 0 6px; }
+  :deep(.inline-cmd) { padding: 0 5px; }
 }
-@media (max-width: 380px) {
-  :deep(.banner) { font-size: 6.3px; }
+@media (max-width: 420px) {
+  .tw-body { font-size: .68rem; padding: .6rem .55rem .8rem; }
+  :deep(.banner) { font-size: 5.4px; }
+  :deep(.me-name) { font-size: 1em; }
+  .chip { font-size: .74rem; padding: .35rem .65rem; }
+}
+@media (max-width: 360px) {
+  :deep(.banner) { font-size: 4.8px; }
+  .tw-body { font-size: .65rem; }
+}
+
+/* No-keyboard mode: chips are the only input, make them bigger / more obvious */
+@media (pointer: coarse) {
+  .tw-suggest {
+    padding: 0.65rem 0.6rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(0,0,0,0.4);
+  }
+  .chip {
+    font-size: .82rem;
+    padding: .45rem .8rem;
+    background: var(--tag-bg);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .chip:active { background: var(--amber); color: #0a1a12; }
+  .touch-hint { opacity: 0.7; }
 }
 </style>
