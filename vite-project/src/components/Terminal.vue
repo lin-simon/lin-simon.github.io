@@ -665,6 +665,7 @@ onBeforeUnmount(() => {
   line-height: 1.55;
 }
 .tw-body :deep(pre) { max-width: 100%; overflow-x: auto; scrollbar-width: thin; }
+.tw-body :deep(pre.banner) { overflow: hidden; }
 .tw-stream { display: flex; flex-direction: column; }
 .tw-line { white-space: pre-wrap; word-break: break-word; }
 .tw-line + .tw-line { margin-top: 2px; }
