@@ -52,11 +52,11 @@ const links = [
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  padding: 0.55rem;
+  gap: 0.7rem;
+  padding: 0.7rem;
   background: rgba(10, 26, 18, 0.55);
   border: 1px solid rgba(116, 224, 138, 0.18);
-  border-radius: 14px;
+  border-radius: 16px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 5;
@@ -66,13 +66,13 @@ const links = [
 
 .dock-item {
   position: relative;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #d4f5d4;
-  border-radius: 10px;
+  border-radius: 12px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(116, 224, 138, 0.12);
   transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
@@ -83,7 +83,7 @@ const links = [
   border-color: rgba(116, 224, 138, 0.45);
   transform: translateY(-2px);
 }
-.icon { width: 1.15rem; height: 1.15rem; display: inline-flex; }
+.icon { width: 1.5rem; height: 1.5rem; display: inline-flex; }
 .icon :deep(svg) { width: 100%; height: 100%; }
 
 .label {
@@ -109,8 +109,26 @@ const links = [
   transform: translateY(-50%) translateX(0);
 }
 
-/* Mobile / touch: rely on the in-terminal commands; hide the dock. */
+/* Mobile / touch: horizontal dock pinned to the bottom, fixed so it
+   does not push terminal layout. */
 @media (max-width: 720px), (hover: none) {
-  .dock { display: none; }
+  .dock {
+    top: auto;
+    left: 50%;
+    bottom: calc(0.6rem + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    border-radius: 14px;
+    animation: fade-in-mobile .8s ease .3s both;
+  }
+  @keyframes fade-in-mobile {
+    from { opacity: 0; transform: translate(-50%, 8px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
+  }
+  .dock-item { width: 2.5rem; height: 2.5rem; border-radius: 10px; }
+  .icon { width: 1.15rem; height: 1.15rem; }
+  .label { display: none; }
 }
 </style>
