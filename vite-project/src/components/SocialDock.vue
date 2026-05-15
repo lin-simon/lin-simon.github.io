@@ -109,23 +109,26 @@ const links = [
   transform: translateY(-50%) translateX(0);
 }
 
-/* Mobile / touch: horizontal dock pinned to the top so it does not
-   overlap the terminal output area. */
+/* Mobile / touch: horizontal dock in normal flow so it scrolls with
+   the page instead of covering the terminal. App.vue switches to
+   flex-column layout and orders this dock above the terminal. */
 @media (max-width: 720px), (hover: none) {
   .dock {
-    top: calc(0.6rem + env(safe-area-inset-top));
-    left: 50%;
+    position: static;
+    top: auto;
+    left: auto;
     bottom: auto;
-    transform: translateX(-50%);
+    transform: none;
     flex-direction: row;
     gap: 0.5rem;
     padding: 0.45rem;
     border-radius: 14px;
+    align-self: center;
     animation: fade-in-mobile .8s ease .3s both;
   }
   @keyframes fade-in-mobile {
-    from { opacity: 0; transform: translate(-50%, -8px); }
-    to   { opacity: 1; transform: translate(-50%, 0); }
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .dock-item { width: 2.5rem; height: 2.5rem; border-radius: 10px; }
   .icon { width: 1.15rem; height: 1.15rem; }

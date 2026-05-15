@@ -62,4 +62,16 @@ onMounted(() => {
   pointer-events: none;
 }
 .hero-terminal { position: relative; z-index: 1; width: 100%; max-width: 920px; }
+
+/* Mobile: stack dock above terminal in normal flow so it scrolls. */
+@media (max-width: 720px), (hover: none) {
+  .app {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    overflow: visible;
+  }
+  .hero-terminal { order: 2; }
+}
 </style>
