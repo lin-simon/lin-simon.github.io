@@ -66,13 +66,13 @@ const links = [
 
 .dock-item {
   position: relative;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3.9rem;
+  height: 3.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #d4f5d4;
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(116, 224, 138, 0.12);
   transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
@@ -83,7 +83,7 @@ const links = [
   border-color: rgba(116, 224, 138, 0.45);
   transform: translateY(-2px);
 }
-.icon { width: 1.5rem; height: 1.5rem; display: inline-flex; }
+.icon { width: 1.85rem; height: 1.85rem; display: inline-flex; }
 .icon :deep(svg) { width: 100%; height: 100%; }
 
 .label {
@@ -109,13 +109,13 @@ const links = [
   transform: translateY(-50%) translateX(0);
 }
 
-/* Mobile / touch: horizontal dock pinned to the bottom, fixed so it
-   does not push terminal layout. */
+/* Mobile / touch: horizontal dock pinned to the top so it does not
+   overlap the terminal output area. */
 @media (max-width: 720px), (hover: none) {
   .dock {
-    top: auto;
+    top: calc(0.6rem + env(safe-area-inset-top));
     left: 50%;
-    bottom: calc(0.6rem + env(safe-area-inset-bottom));
+    bottom: auto;
     transform: translateX(-50%);
     flex-direction: row;
     gap: 0.5rem;
@@ -124,7 +124,7 @@ const links = [
     animation: fade-in-mobile .8s ease .3s both;
   }
   @keyframes fade-in-mobile {
-    from { opacity: 0; transform: translate(-50%, 8px); }
+    from { opacity: 0; transform: translate(-50%, -8px); }
     to   { opacity: 1; transform: translate(-50%, 0); }
   }
   .dock-item { width: 2.5rem; height: 2.5rem; border-radius: 10px; }
